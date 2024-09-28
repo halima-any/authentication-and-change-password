@@ -1,0 +1,12 @@
+<ul>
+  <li><a href="{% url 'home' %}">HOME</a></li>
+  <li><a href="{% url 'joobfeed' %}">JOB FEED</a></li>
+  <li><a href="{% url 'addjob' %}">ADD JOB</a></li>
+  <li><a href="{% url 'changePassword' %}">Change Password</a></li>
+
+
+  <div style="float: right;">
+    <li><a class="active" href="">{{user.get_full_name}}</a></li>
+    <li><a href="{% url 'logoutpage' %}">LOG OUT</a></li>
+  </div>
+</ul>

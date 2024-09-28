@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        h1 {
+            font-size: 5rem;
+            color: #d9534f;
+        }
+        p {
+            font-size: 1.25rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% include 'includes/message.html' %}
+        <h1>404</h1>
+        <p>Oops! The page you are looking for does not exist.</p>
+        <p>
+            You might want to go back to the <a href="{% url 'home' %}" class="btn btn-primary">home page</a> or check the URL for mistakes.
+        </p>
+        <footer class="mt-4">
+            <p>&copy; 2024 Your Website Name. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    
+    
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Job</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Add Job</h1>
+    </header>
+    <main>
+        <form action="{% url 'addjob' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+          
+
+            <label for="job_title">Job Title</label>
+            <input type="text" id="job_title" name="job_title" required>
+
+            <label for="company_namne">Company Name</label>
+            <input type="text" id="company_namne" name="company_namne" required>
+
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location" required>
+
+            <label for="salary">Salary</label>
+            <input type="number" id="salary" name="salary" required>
+
+            <label for="img"> IMAGE</label>
+            <input type="file" id="img" name="img" required>
+            <br>
+            <br>
+
+            <label for="posted_date">POSTED DATE</label>
+            <input type="date" id="posted_date" name="posted_date" required>
+
+            <label for="application_deadline">Application Deadline</label>
+            <input type="date" id="application_deadline" name="application_deadline" required>
+
+            <label for="ememployment_type">Employment Type</label>
+            <select id="ememployment_type" name="ememployment_type" required>
+                <option value="">Select Type</option>
+                <option value="full-time">Full-Time</option>
+                <option value="part-time">Part-Time</option>
+                <option value="contract">Contract</option>
+                <option value="internship">Internship</option>
+            </select>
+
+            <label for="description">Job Description</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+
+            <button type="submit">Add Job</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Job Feed. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+{% endblock body %}
+
+
+           

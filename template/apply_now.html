@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h1> You are  going to apply for {{specific_job.job_title}} </h1>
+  
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="file"] {
+            margin: 10px 0;
+        }
+
+        button {
+            background-color: #5cb85c;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Job Application Form</h1>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            
+            <label for="full_name">Full Name:</label>
+            <input type="text" id="full_name" name="full_name" required>
+
+          
+
+            <label for="resume">Resume (PDF/DOC):</label>
+            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+
+            <label for="cover">Cover Letter:</label>
+            <textarea id="cover" name="cover" rows="4" maxlength="100" required></textarea>
+
+           
+            <label for="salary">Salary:</label>
+            <input type="number" id="salary" name="salary" required>
+
+
+            <label for="expected_salary">Expected Salary:</label>
+            <input type="number" id="expected_salary" name="expected_salary" required>
+
+            <label for="work_experience">Work Experience:</label>
+            <input type="text" id="work_experience" name="work_experience" required>
+
+            <label for="skills">Skills:</label>
+            <input type="text" id="skills" name="skills" required>
+
+            <label for="linkedin_url">LinkedIn Profile:</label>
+            <input type="url" id="linkedin_url" name="linkedin_url">
+
+            <button type="submit">Submit Application</button>
+        </form>
+    </div>
+</body>
+</html>
+
+{% endblock body %}
+
+
+    

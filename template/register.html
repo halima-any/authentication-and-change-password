@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: black;
+            color: #333;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Add padding to containers */
+        .container {
+            padding: 16px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+
+        /* Full-width input fields */
+        input[type="text"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            border: none;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        select:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        /* Styling for the select box */
+        select {
+            appearance: none; /* Remove default arrow */
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="black" height="20" width="20" viewBox="0 0 20 20"><polygon points="5,7 10,12 15,7" /></svg>') no-repeat right 10px center;
+            background-size: 12px;
+        }
+
+        /* Overwrite default styles of hr */
+        hr {
+            border: 1px solid #f1f1f1;
+            margin: 25px 0;
+        }
+
+        /* Set a style for the submit button */
+        .registerbtn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+            opacity: 0.9;
+        }
+
+        .registerbtn:hover {
+            opacity: 1;
+        }
+
+        /* Add a blue text color to links */
+        a {
+            color: dodgerblue;
+            text-decoration: none;
+        }
+
+        /* Set a grey background color and center the text of the "sign in" section */
+        .signin {
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 15px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="container">
+        <h1>Sign Up</h1>
+        {% include 'includes/message.html' %}
+
+        <hr>
+
+        <label for="usertype">User Type</label>
+        <select name="usertype" id="usertype" required>
+            <option value="jobcreator">JOBCREATOR</option>
+            <option value="jobseeker">JOBSEEKER</option>
+        </select>
+
+        <label for="username">Username</label>
+        <input type="text" placeholder="Enter username" id="username" name="username" required>
+
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" id="password" required>
+
+        <label for="confirm_password"><b>Confirm Password</b></label>
+        <input type="password" placeholder="Confirm Password" name="confirm_password" id="confirm_password" required>
+
+        <hr>
+        <button type="submit" class="registerbtn">Register</button>
+    </div>
+
+    <div class="container signin">
+        <p>Already have an account? <a href="{% url 'loginPage' %}">Log in</a>.</p>
+    </div>
+</form>
+
+</body>
+</html>
+

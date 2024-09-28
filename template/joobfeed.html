@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Feed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .job-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .job-item {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .job-item h2 {
+            margin: 0 0 10px;
+        }
+
+        .job-item p {
+            margin: 5px 0;
+        }
+
+        .apply-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .apply-btn:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .search-bar {
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .search-bar button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Job Feed</h1>
+    </header>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Search for jobs...">
+        <button>Search</button>
+    </div>
+
+    <main>
+        <div class="job-list">
+            {% for i in data %}
+            <div class="job-item">
+                <h2>{{ i.job_title }}</h2>
+                <div class="logo">
+                    <img height="100px" width="100px" src="/{{ i.img }}" alt="Company logo">
+                </div>
+                <p>Company: {{ i.company_name }}</p>
+                <p>Location: {{ i.location }}</p>
+                <p>Posted on: {{ i.posted_date }}</p>
+                <p>Salary: {{ i.salary }}</p>
+                <p>Application Deadline: {{ i.application_deadline }}</p>
+                <p>Employment Type: {{ i.ememployment_type }}</p>
+                <p>Description: {{ i.description }}</p>
+
+                {% if request.user.usertype == "jobseeker" %}
+                <a href="{% url 'apply_now' i.id %}" class="apply-btn">Apply Now</a>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Job Feed. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+{% endblock body %}
